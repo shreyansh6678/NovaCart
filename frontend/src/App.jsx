@@ -1,4 +1,5 @@
 import { Routes,Route } from "react-router-dom"
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import MainLayout from "./layouts/Mainlayout.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
@@ -17,15 +18,15 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout/>}>
       <Route index element={<Home/>}/>
+      <Route path="products" element={<Products/>}/>
+      <Route path="products/:productId" element={<ProductDetails/>}/>
+      <Route path="cart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
+      <Route path="wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+      <Route path="orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+      <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      </Route>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
-      <Route path="/products" element={<Products/>}/>
-      <Route path="/products/:productId" element={<ProductDetails/>}/>
-      <Route path="/cart" element={<Cart/>}/>
-      <Route path="wishlist" element={<Wishlist />} />
-      <Route path="orders" element={<Orders />} />
-      <Route path="profile" element={<Profile />} />
-      </Route>
       <Route path="*" element={<NotFound/>}/>
     </Routes>
   )

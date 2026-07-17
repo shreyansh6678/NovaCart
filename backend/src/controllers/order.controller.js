@@ -89,7 +89,7 @@ const getMyOrders=async(req,res)=>{
         })
         .populate({
             path: "items.product",
-            select: "title price images"
+            select: "title price discount images"
         })
         .sort({ createdAt: -1 });
 

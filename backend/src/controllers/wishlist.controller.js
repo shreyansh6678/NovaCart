@@ -20,7 +20,7 @@ const addToWishlist = async (req, res) => {
             })
             return successResponse(res,201,"Product added to wishlist",wishlist)
         }
-        const alreadyExists=wishlist.product.some((item)=>item.toString()===productId)
+        const alreadyExists=wishlist.products.some((item)=>item.toString()===productId)
         if(alreadyExists){
             return errorResponse(res,400,"Product already exists in wishlist")
         }
@@ -35,11 +35,11 @@ const addToWishlist = async (req, res) => {
 
 const getWishlist = async (req, res) => {
     try {
-       const wishlist=await Wishlist.findOne({user:req.user._id}).populate({path:"products",select:"title price images stock brand"})
+       const wishlist=await Wishlist.findOne({user:req.user._id}).populate({path:"products",select:"title price discount images brand"})
        if(!wishlist){
         return successResponse(res,200,"Wishlist is empty",{products:[]})
        }
-       return successResponse(res,200,"Wishlist fetch successfully")
+       return successResponse(res,200,"Wishlist fetch successfully",wishlist)
     } catch (error) {
         console.error(error)
         return errorResponse(res,500,"Internal server error")

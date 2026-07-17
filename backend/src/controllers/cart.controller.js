@@ -25,14 +25,14 @@ const addToCart = async (req, res) => {
             cart=await Cart.create({
                 user:req.user._id,
                 items:[{
-                    products:productId,
+                    product:productId,
                     quantity
                 }
                 ]
             })
             return successResponse(res,201,"Product added to Cart",cart)
         }
-     const existingItem= cart.items.find((item)=>item.product.toString()===productId)
+     const existingItem= cart.items.find((item)=>item.product?.toString()===productId)
      if(existingItem){
         existingItem.quantity+=quantity
      }
@@ -52,7 +52,7 @@ const addToCart = async (req, res) => {
 
 const getCart = async (req, res) => {
     try {
-        const cart=await Cart.findOne({user:req.user._id}).populate({path:"items.product",select:"title prices images stock "})
+        const cart=await Cart.findOne({user:req.user._id}).populate({path:"items.product",select:"title price discount images brand stock "})
         if(!cart){
             return successResponse(res,200,"Cart is empty",{items:[]})
         }

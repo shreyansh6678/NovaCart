@@ -52,10 +52,9 @@ const registerUser=async(req,res)=>{
 
 }
 const loginUser=async(req,res)=>{
-
     const {email,password}=req.body
     if(!email|| !password){
-        return errorResponse(res,400,"email and pssword is required")
+        return errorResponse(res,400,"email and password is required")
     }
     const user=await User.findOne({email}).select("+password")
     if(!user){
@@ -102,6 +101,74 @@ const logoutUser=async(req,res)=>{
      }
 }
 const getCurrentUser=async(req,res)=>{
-    return successResponse(res,200,req.user,"current user")
+    return successResponse(res,200,"current user",req.user)
 }
-export {registerUser,loginUser,logoutUser,getCurrentUser}
+const updateAccountDetails = async (req, res) => {
+  try {
+    const { fullName, email } = req.body;
+
+    if (!fullName?.trim() || !email?.trim()) {
+      return errorResponse(res, 400, "Full name and username are required");
+    }
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return errorResponse(res, 404, "User not found");
+    }
+
+    user.fullName = fullName.trim();
+    user.email = email.trim();
+
+    await user.save();
+
+    return successResponse(
+      res,
+      200,
+      "Account updated successfully",
+      user
+    );
+  } catch (error) {
+    console.error(error);
+    return errorResponse(res, 500, "Internal Server Error");
+  }
+};
+const changeCurrentPassword = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+
+    if (!oldPassword || !newPassword) {
+      return errorResponse(
+        res,
+        400,
+        "Old password and new password are required"
+      );
+    }
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return errorResponse(res, 404, "User not found");
+    }
+
+    const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
+
+    if (!isPasswordCorrect) {
+      return errorResponse(res, 400, "Old password is incorrect");
+    }
+
+    user.password = newPassword;
+
+    await user.save();
+
+    return successResponse(
+      res,
+      200,
+      "Password changed successfully"
+    );
+  } catch (error) {
+    console.error(error);
+    return errorResponse(res, 500, "Internal Server Error");
+  }
+};
+export {registerUser,loginUser,logoutUser,getCurrentUser,updateAccountDetails,changeCurrentPassword}

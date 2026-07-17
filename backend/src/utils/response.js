@@ -1,6 +1,6 @@
 
 
-const successResponse=function(res,statusCode,data,message){
+const successResponse=function(res,statusCode,message,data){
     return res
     .status(statusCode)
     .json({status:"success",message,data})
