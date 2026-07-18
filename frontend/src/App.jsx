@@ -13,7 +13,7 @@ import Profile from "./pages/Profile.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import AdminRoute from "./components/AdminLayouts/AdminRoute.jsx";
 import AdminLayout from "./components/AdminLayouts/adminLayout.jsx";
-import Dashboard from "./pages/Admin/dashboard.jsx";
+import Dashboard from "./pages/Admin/Dashboard.jsx";
 import AdminProducts from "./pages/Admin/adminProducts.jsx";
 import AdminCategories from "./pages/Admin/adminCategories.jsx";
 import AdminOrders from "./pages/Admin/adminOrders.jsx";
