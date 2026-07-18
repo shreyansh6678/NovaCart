@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "../api/axios.js";
 import Loader from "../components/Loader/Loader.jsx";
+import { useNavigate } from "react-router-dom";
 import "./css/cart.css"
 
 const Cart = () => {
+    const navigate = useNavigate();
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const getCart = async () => {
