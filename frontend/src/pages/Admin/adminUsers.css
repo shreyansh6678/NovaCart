@@ -1,0 +1,115 @@
+:root {
+  --primary: #2d6a4f;
+  --primary-dark: #1b4332;
+  --secondary: #40916c;
+  --accent: #ffd166;
+  --background: #f8f9fa;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+}
+
+.admin-users {
+  padding: 32px;
+  background: var(--background);
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+}
+
+.admin-users-heading {
+  margin: 0 0 24px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(27, 67, 50, 0.07);
+}
+
+.admin-table thead {
+  background: var(--primary-dark);
+}
+
+.admin-table thead th {
+  text-align: left;
+  padding: 16px 22px;
+    color: black;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.admin-user-row {
+  border-top: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.admin-user-row:hover {
+  background: #f1f8f4;
+}
+
+.admin-user-name {
+  padding: 16px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-user-email {
+  padding: 16px 22px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.admin-user-role {
+  padding: 16px 22px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-user-role::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .admin-users {
+    padding: 18px;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-user-row {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px;
+    gap: 4px;
+  }
+
+  .admin-user-name,
+  .admin-user-email,
+  .admin-user-role {
+    padding: 0;
+  }
+}

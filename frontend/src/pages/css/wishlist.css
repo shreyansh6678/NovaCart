@@ -124,15 +124,15 @@
 
 .wishlist-item .remove {
   grid-row: 1;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+ background: transparent;
     color: var(--danger);
-    border: 1px solid black;
+    border: 1px solid rgba(245, 103, 252, 0.268);
 }
 
 .wishlist-item .remove:hover {
-    background: var(--danger);
+    background: transparent;
     color: var(--danger);
-    border-color: var(--danger);
+    /* border-color: var(--danger); */
     transform: translateY(-1px);
 }
 

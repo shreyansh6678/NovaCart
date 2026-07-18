@@ -142,7 +142,7 @@ try {
     if(order.orderStatus==="Delivered"){
         return errorResponse(res,400,"Delivered order cannot be cancelled")
     }
-    order.status="Cancelled"
+    order.orderStatus="Cancelled"
     await order.save()
     return successResponse(
             res,

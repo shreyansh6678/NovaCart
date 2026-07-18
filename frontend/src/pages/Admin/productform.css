@@ -1,0 +1,144 @@
+.product-form-container {
+  --primary: #2d6a4f;
+  --primary-dark: #1b4332;
+  --secondary: #40916c;
+  --accent: #ffd166;
+  --background: #f8f9fa;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 40px 48px;
+  background: var(--background);
+  min-height: 100vh;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.form-input-title,
+.form-textarea-description,
+.form-input-price,
+.form-input-discount,
+.form-input-stock,
+.form-input-brand,
+.form-select-category {
+  width: 98%;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.form-input-title:focus,
+.form-textarea-description:focus,
+.form-input-price:focus,
+.form-input-discount:focus,
+.form-input-stock:focus,
+.form-input-brand:focus,
+.form-select-category:focus {
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+
+.form-input-title::placeholder,
+.form-textarea-description::placeholder,
+.form-input-price::placeholder,
+.form-input-discount::placeholder,
+.form-input-stock::placeholder,
+.form-input-brand::placeholder {
+  color: var(--text-light);
+}
+
+.form-textarea-description {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-select-category {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-light) 50%),
+    linear-gradient(135deg, var(--text-light) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.form-input-images {
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 10px 0;
+}
+
+.form-input-images::file-selector-button {
+  padding: 8px 14px;
+  margin-right: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--primary-dark);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.form-input-images::file-selector-button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.form-submit-btn {
+  align-self: flex-start;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 67, 50, 0.32);
+}
+
+.form-submit-btn:active {
+  transform: translateY(0);
+}

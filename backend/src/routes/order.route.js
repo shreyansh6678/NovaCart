@@ -17,11 +17,12 @@ orderRouter.post("/", verifyJWT, placeOrder);
 
 orderRouter.get("/", verifyJWT, getMyOrders);
 
+orderRouter.get("/all", verifyJWT, verifyAdmin, getAllOrders);
+
 orderRouter.get("/:orderId", verifyJWT, getOrderById);
 
 orderRouter.patch("/:orderId/cancel", verifyJWT, cancelOrder);
 
-orderRouter.get("/all", verifyJWT, verifyAdmin, getAllOrders);
 
 orderRouter.patch(
     "/:orderId/status",

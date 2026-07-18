@@ -105,8 +105,8 @@
 }
 
 .products-filters > button:hover {
-  background: var(--danger);
-  color: black;
+  background: transparent;
+  color: rgb(229, 162, 173);
   transform: translateY(-1px);
 }
 

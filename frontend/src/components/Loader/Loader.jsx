@@ -1,10 +1,15 @@
+import "./Loader.css";
 
 const Loader = () => {
   return (
-    <h2>
-        Loading...
-    </h2>
-  )
-}
+    <div className="loader-container">
+      <div className="dots-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;

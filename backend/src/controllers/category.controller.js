@@ -80,6 +80,17 @@ const deleteCategory=async (req,res)=>{
         if(!categoryExist){
             return errorResponse(res,404,"Category doesn't Exists")
         }
+        const existingProduct = await Product.findOne({
+  category: categoryId,
+});
+
+if (existingProduct) {
+  return errorResponse(
+    res,
+    400,
+    "Cannot delete category because products are using it."
+  );
+}
         await categoryExist.deleteOne()
         return successResponse(res,200,"Category deleted successfully",null)
     } catch (error) {

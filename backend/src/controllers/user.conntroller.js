@@ -171,4 +171,21 @@ const changeCurrentPassword = async (req, res) => {
     return errorResponse(res, 500, "Internal Server Error");
   }
 };
-export {registerUser,loginUser,logoutUser,getCurrentUser,updateAccountDetails,changeCurrentPassword}
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find()
+      .select("-password -refreshToken")
+      .sort({ createdAt: -1 });
+
+    return successResponse(
+      res,
+      200,
+      "Users fetched successfully",
+      users
+    );
+  } catch (error) {
+    console.error(error);
+    return errorResponse(res, 500, "Internal server error");
+  }
+};
+export {registerUser,loginUser,logoutUser,getCurrentUser,updateAccountDetails,changeCurrentPassword,getAllUsers}

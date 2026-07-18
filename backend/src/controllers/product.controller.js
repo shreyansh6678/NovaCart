@@ -42,7 +42,7 @@ const addProduct=async(req,res)=>{
 }
 const getAllProducts=async(req,res)=>{
       try {
-        const {search,category,minPrice,maxPrice,sort,page=1,limit=10}=req.query
+        const {search,category,minPrice,maxPrice,sort,page=1,limit=12}=req.query
         const filter={};
         const searchTerm=search?.trim()
         if(searchTerm){
@@ -95,17 +95,38 @@ const getAllProducts=async(req,res)=>{
         const products=await Product.find(filter).populate({path:"category",select:"name"}).sort(sortOption).skip(skip).limit(limitNumber)
         const totalProduct=await Product.countDocuments(filter)
         const totalPages=Math.ceil(totalProduct/limitNumber)
-      return successResponse(res,200,"Fetched all products",{products,pagination:{
-        page:pageNumber,
-        limit:limitNumber,
-        totalProduct,
-        totalPages
-      }})
-      } catch (error) {
+        return successResponse(res,200,"Fetched all products",{products,pagination:{
+            page:pageNumber,
+            limit:limitNumber,
+            totalProduct,
+            totalPages
+        }})
+    } catch (error) {
         console.error(error)
         return errorResponse(res,500,"Internal server error")
-      }
-    }    
+    }
+}    
+const premiumProducts = async (req, res) => {
+  try {
+    const products = await Product.find()
+      .populate({
+        path: "category",
+        select: "name",
+      })
+      .sort({ price: -1 })
+      .limit(5);
+
+    return successResponse(
+      res,
+      200,
+      "Premium products fetched successfully",
+      products
+    );
+  } catch (error) {
+    console.error(error);
+    return errorResponse(res, 500, "Internal server error");
+  }
+};
 const getProductById=async(req,res)=>{
     try {
          const {productId}=req.params
@@ -180,6 +201,6 @@ const deleteProduct=async(req,res)=>{
    }
 }
 
-export {addProduct,getAllProducts,getProductById,updateProduct,deleteProduct}
+export {addProduct,getAllProducts,getProductById,updateProduct,deleteProduct,premiumProducts}
 
 

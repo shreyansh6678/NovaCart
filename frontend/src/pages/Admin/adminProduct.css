@@ -1,0 +1,205 @@
+.products-container {
+  --primary: #2d6a4f;
+  --primary-dark: #1b4332;
+  --secondary: #40916c;
+  --accent: #ffd166;
+  --background: #f8f9fa;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+
+  background: var(--background);
+  min-height: 100vh;
+  padding: 32px 40px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+}
+
+.admin-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.admin-products-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.add-product-btn {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.add-product-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 67, 50, 0.32);
+}
+
+.add-product-btn:active {
+  transform: translateY(0);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.admin-table thead th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  background: var(--background);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.product-row:last-child {
+  border-bottom: none;
+}
+
+.product-row:hover {
+  background: #f4faf7;
+}
+
+.admin-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.product-image-cell {
+  width: 72px;
+}
+
+.product-image {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+
+.product-title-cell {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.product-price-cell {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.product-stock-cell {
+  color: var(--text);
+}
+
+.product-category-cell {
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.product-actions-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.edit-btn {
+  color: var(--primary-dark);
+}
+
+.edit-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.delete-btn {
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #ffffff;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--primary-dark);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 500;
+}

@@ -57,7 +57,7 @@ const Orders = () => {
           <div key={order._id} className="order-card">
             <div className="order-header">
               <h2>Order #{order._id.slice(-6).toUpperCase()}</h2>
-              <span>{order.status}</span>
+              <span>{order.orderStatus}</span>
             </div>
             <div className="order-items">
               {order.items.map((item) => {
@@ -77,7 +77,7 @@ const Orders = () => {
                       <p>{item.product.brand}</p>
                       <p>Quantity: {item.quantity}</p>
                       <p>₹{discountedPrice.toLocaleString("en-IN")}</p>
-                      {order.status === "Pending" ? (
+                      {order.orderStatus === "Pending" ? (
                         <button onClick={() => cancelOrder(order._id)}>
                           Cancel Order
                         </button>

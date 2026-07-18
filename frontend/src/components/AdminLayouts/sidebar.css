@@ -1,0 +1,33 @@
+.admin-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:250px;
+    background:#1B4332;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    padding:25px;
+    gap:15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    
+}
+
+.sidebar a.active{
+    background:#2D6A4F;
+}
+
+.admin-content{
+    flex:1;
+    padding:30px;
+    background:#F8F9FA;
+}

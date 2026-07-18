@@ -1,0 +1,36 @@
+.dashboard {
+  padding: 30px;
+}
+
+.dashboard h1 {
+  margin-bottom: 30px;
+  color: var(--primary-dark);
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: .3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-card h3 {
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.dashboard-card h2 {
+  font-size: 34px;
+  color: var(--primary);
+}

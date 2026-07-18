@@ -65,9 +65,9 @@ const ProductDetails = () => {
     (product.price * product.discount) / 100);
   return (
     <div className="product-details">
-      <div className="product-image">
+      <div className="products-image">
         <img
-    src={product.images[0].url}
+    src={product?.images[0]?.url}
     alt={product.title}
 />
       </div>

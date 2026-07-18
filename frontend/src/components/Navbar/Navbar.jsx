@@ -11,10 +11,16 @@ function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
   }, [user]);
-  const handleSearch = (e) => {
-  e.preventDefault();
 
-  navigate(`/products?search=${search}`);
+const handleSearch = (e) => {
+  e.preventDefault();
+  const query = search.trim();
+if (!query) {
+    navigate("/products")
+    return
+  } else {
+    navigate(`/products?search=${encodeURIComponent(query)}`);
+  }
 };
   const linkClass = ({ isActive }) => "nav-item" + (isActive ? " active" : "");
 

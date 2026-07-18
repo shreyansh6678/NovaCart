@@ -226,7 +226,7 @@
 
 .cart-summary button:first-of-type {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: var(--danger);
+  color: #fff;
   box-shadow: 0 10px 22px rgba(45, 106, 79, 0.32);
 }
 

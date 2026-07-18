@@ -3,13 +3,14 @@ import { api } from "../api/axios.js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader/Loader.jsx";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./css/products.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sort, setSort] = useState("");
@@ -22,16 +23,18 @@ const Products = () => {
   const search = searchParams.get("search") || "";
   const getProducts = async () => {
     try {
+      console.log("selectedCategory:", selectedCategory);
+console.log("category from URL:", category);
       setLoading(true);
       const response = await api.get("/products", {
         params: {
           search,
-          category: selectedCategory,
+          category,
           sort,
           page,
-          limit: 10,
-          minPrice:priceRange[0],
-          maxPrice:priceRange[1]
+          limit: 12,
+          minPrice: priceRange[0],
+          maxPrice: priceRange[1],
         },
       });
       setProducts(response.data.data.products);
@@ -50,13 +53,23 @@ const Products = () => {
       toast.error(error?.response?.data?.message || "Something went wrong");
     }
   };
+  const category = searchParams.get("category") || "";
+
+  useEffect(() => {
+    setSelectedCategory(category);
+    setPage(1)
+  }, [category]);
   useEffect(() => {
     getCategories();
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
     getProducts();
-  }, [search, selectedCategory, sort, page]);
+  }, 500);
+
+  return () => clearTimeout(timer);
+  }, [search, category, sort, page, priceRange]);
   if (loading) {
     return <Loader />;
   }
@@ -66,8 +79,19 @@ const Products = () => {
         <select
           value={selectedCategory}
           onChange={(e) => {
+            const value = e.target.value;
             setSelectedCategory(e.target.value);
             setPage(1);
+
+            const params = new URLSearchParams(searchParams);
+
+            if (value) {
+              params.set("category", value);
+            } else {
+              params.delete("category");
+            }
+
+            navigate(`/products?${params.toString()}`);
           }}
         >
           <option value="">All Categories</option>
@@ -90,48 +114,47 @@ const Products = () => {
           <option value="priceAsc">Price: Low to High</option>
           <option value="priceDesc">Price: High to Low</option>
         </select>
- <div className="price-filter">
-  <p>
-    ₹{priceRange[0]} - ₹{priceRange[1]}
-  </p>
+        <div className="price-filter">
+          <p>
+            ₹{priceRange[0]} - ₹{priceRange[1]}
+          </p>
 
-  <Slider
-    range
-    min={0}
-    max={100000}
-    value={priceRange}
-    onChange={(value) => setPriceRange(value)}
-    onAfterChange={(value) => {
-      setPriceRange(value);
-      setPage(1);
-      getProducts();
-    }}
-  />
-</div>
-<button
-  onClick={() => {
-    setSelectedCategory("");
-    setSort("");
-    setPriceRange([0, 100000]);
-    setPage(1);
-    getProducts()
-  }}
->
-  Clear Filters
-</button>
+          <Slider
+            range
+            min={0}
+            max={100000}
+            value={priceRange}
+            onChange={(value) => setPriceRange(value)}
+            onAfterChange={(value) => {
+              setPriceRange(value);
+              setPage(1);
+            }}
+          />
+        </div>
+        <button
+          onClick={() => {
+            setSelectedCategory("");
+            setSort("");
+            setPriceRange([0, 100000]);
+            setPage(1);
+            navigate("/products");
+          }}
+        >
+          Clear Filters
+        </button>
       </div>
       <div className="products-grid">
-  {products.length > 0 ? (
-    products.map((product) => (
-      <ProductCard key={product._id} product={product} />
-    ))
-  ) : (
-    <div className="products-empty">
-      <h2>No Products Found</h2>
-      <p>Try checking back later or browse another category.</p>
-    </div>
-  )}
-</div>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))
+        ) : (
+          <div className="products-empty">
+            <h2>No Products Found</h2>
+            <p>Try checking back later or browse another category.</p>
+          </div>
+        )}
+      </div>
       <div className="pagination">
         <button
           disabled={page === 1}
