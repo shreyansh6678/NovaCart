@@ -40,6 +40,10 @@ function Register() {
       setLoading(true)
       await register(formData)
       toast.success("Account created! Redirecting to login...")
+      setTimeout(() => {
+  toast.dismiss();
+  navigate("/login");
+}, 1000);
       navigate("/login")
     } catch (err) {
       toast.error(err?.message || "Something went wrong while creating your account.")

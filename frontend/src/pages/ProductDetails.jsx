@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import { api } from "../api/axios.js";
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const [addingToCart, setAddingToCart] = useState(false);
   const [addingToWishlist,setAddingToWishlist]=useState(false)
   const { productId } = useParams();
+  const navigate = useNavigate();
   const getProductById = async () => {
     try {
       setLoading(true);
@@ -42,6 +43,11 @@ const ProductDetails = () => {
       const response=await api.post("/cart",{productId:product._id,quantity:1})
       toast.success(response.data.message);
     } catch (error) {
+      if (error.response?.status === 401) {
+        toast("Please login to continue.")
+    navigate("/login");
+    return;
+  }
       toast.error(error?.response?.data?.message)
     }
     finally{
@@ -54,6 +60,11 @@ const ProductDetails = () => {
       const response=await api.post("/wishlist",{productId:product._id,quantity:1})
       toast.success(response.data.message);
     } catch (error) {
+      if (error.response?.status === 401) {
+        toast("Please login to continue.")
+    navigate("/login");
+    return;
+  }
       toast.error(error?.response?.data?.message)
     }
     finally{
