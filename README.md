@@ -96,15 +96,19 @@ NovaCart/
 │
 └── README.md
 ```
-## 🏗 Architecture
+## 🏗️ Architecture
 
+```text
 Frontend (React)
         │
-REST APIs (Express.js)
+        ▼
+REST API Layer (Node.js + Express.js)
         │
-MongoDB Atlas
+        ▼
+Database (MongoDB Atlas)
         │
-Cloudinary
+        ▼
+Cloudinary (Image Storage)
 ---
 
 ## 🛠️ Installation
