@@ -109,6 +109,7 @@ Database (MongoDB Atlas)
         │
         ▼
 Cloudinary (Image Storage)
+```
 ---
 
 ## 🛠️ Installation
