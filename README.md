@@ -1,22 +1,10 @@
 # 🛒 NovaCart
 
-A full-stack MERN E-commerce application built from scratch featuring secure authentication, role-based authorization, product management, shopping cart, wishlist, order management, and an admin dashboard.
+A production-ready Full Stack MERN E-commerce application featuring JWT authentication, role-based authorization, secure cookie-based sessions, Cloudinary image uploads, shopping cart, wishlist, order management, and an admin dashboard.
 
 🔗 **Live Demo:** https://novacart-ss.vercel.app
 
 💻 **GitHub Repository:** https://github.com/shreyansh6678/NovaCart
-
----
-
-## 📸 Screenshots
-
-<img width="1897" height="978" alt="Screenshot 2026-07-18 184133" src="https://github.com/user-attachments/assets/6648a350-643b-4726-b747-8e21f1002776" />
-<img width="1890" height="1023" alt="Screenshot 2026-07-18 184145" src="https://github.com/user-attachments/assets/4c9b2e4f-4873-48cf-a5a3-80c93e34c170" />
-<img width="1897" height="952" alt="Screenshot 2026-07-18 184208" src="https://github.com/user-attachments/assets/cced7a88-ee72-4b7d-8190-fa36675637ef" />
-<img width="1896" height="911" alt="Screenshot 2026-07-18 184350" src="https://github.com/user-attachments/assets/7b7bc330-e3ed-4a26-a122-c4e70e1370c1" />
-<img width="1901" height="915" alt="Screenshot 2026-07-18 184403" src="https://github.com/user-attachments/assets/edaf3aed-3ac2-4cfb-9c86-f9ed19086f52" />
-<img width="1900" height="957" alt="Screenshot 2026-07-18 184257" src="https://github.com/user-attachments/assets/222d11d8-3358-4f1f-ba71-60a2027e4b5c" />
-
 
 ---
 
@@ -108,7 +96,18 @@ NovaCart/
 │
 └── README.md
 ```
+## 🏗 Architecture
 
+Frontend (React)
+        │
+        ▼
+REST APIs (Express.js)
+        │
+        ▼
+MongoDB Atlas
+        │
+        ▼
+Cloudinary
 ---
 
 ## 🛠️ Installation
@@ -116,7 +115,7 @@ NovaCart/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/novacart.git
+git clone https://github.com/shreyansh6678/NovaCart.git
 ```
 
 ```
@@ -235,6 +234,20 @@ NovaCart includes **30+ RESTful APIs** covering:
 - Dark Mode
 
 ---
+## 📚 What I Learned
+
+While building NovaCart, I gained hands-on experience with:
+
+- JWT Authentication
+- Role-Based Authorization
+- MVC Architecture
+- REST API Design
+- Cloudinary Integration
+- Cookie-Based Authentication
+- Deployment using Vercel & Render
+- CORS & Production Configuration
+
+---
 
 ## 👨‍💻 Author
 
@@ -246,7 +259,14 @@ NovaCart includes **30+ RESTful APIs** covering:
 
 🐙 GitHub: https://github.com/shreyansh6678
 
-🌐 Portfolio: https://your-portfolio-link
+🌐 Portfolio: https://portfolio-by-ss.vercel.app
+
+---
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to fork this repository and submit a pull request.
 
 ---
 
