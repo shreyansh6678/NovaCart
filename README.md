@@ -100,13 +100,10 @@ NovaCart/
 
 Frontend (React)
         │
-        ▼
 REST APIs (Express.js)
         │
-        ▼
 MongoDB Atlas
         │
-        ▼
 Cloudinary
 ---
 
